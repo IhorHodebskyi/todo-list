@@ -60,7 +60,6 @@ export class TodoListService {
       where: { id },
     });
     if (!existTodo) throw new BadRequestException('Todo not found');
-    await this.todoListRepository.delete(id);
-    return;
+    return await this.todoListRepository.delete(id);
   }
 }

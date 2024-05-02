@@ -49,6 +49,7 @@ export class TodoListController {
   @Delete(':id')
   @HttpCode(204)
   remove(@Param('id') id: string) {
+    console.log(id);
     return this.todoListService.remove(+id);
   }
 }
