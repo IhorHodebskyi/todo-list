@@ -39,11 +39,28 @@ export class TodoListService {
     return existTodo;
   }
 
-  update(id: number, updateTodoListDto: UpdateTodoListDto) {
-    return `This action updates a #${id} todoList`;
+  async update(id: number, updateTodoListDto: UpdateTodoListDto) {
+    const existTodo = await this.todoListRepository.findOne({
+      where: { id },
+    });
+    if (!existTodo) throw new BadRequestException('Todo not found');
+    const status = await this.statusService.getStatusValue(
+      `${updateTodoListDto.status}`,
+    );
+    const todo = await this.todoListRepository.create({
+      ...updateTodoListDto,
+      status,
+    });
+    await this.todoListRepository.update(id, todo);
+    return { id, ...todo };
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} todoList`;
+  async remove(id: number) {
+    const existTodo = await this.todoListRepository.findOne({
+      where: { id },
+    });
+    if (!existTodo) throw new BadRequestException('Todo not found');
+    await this.todoListRepository.delete(id);
+    return;
   }
 }

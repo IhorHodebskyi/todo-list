@@ -1,3 +1,3 @@
 export class CreateStatusDto {
-  readonly value: string;
+  readonly status: string;
 }
