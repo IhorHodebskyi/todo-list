@@ -28,7 +28,7 @@ type ButtonType = "submit" | "reset" | "button";
 
 export interface TypesButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   title: string;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void; // Оновлено тип onClick
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   disabled: boolean;
   type: ButtonType;
 }
