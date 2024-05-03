@@ -11,6 +11,7 @@ function App() {
         <TodoForm />
         <h1>Todo List</h1>
         {isLoading && <p>Loading...</p>}
+        {!isLoading && data && data.length === 0 && <h4> To-do list is empty </h4>}
         {!isLoading && data && <TodoList list={data} />}
       </div>
     </>

@@ -17,7 +17,6 @@ import { StatusModule } from './status/status.module';
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DATABASE'),
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
-        // synchronize: true,
       }),
       inject: [ConfigService],
     }),
