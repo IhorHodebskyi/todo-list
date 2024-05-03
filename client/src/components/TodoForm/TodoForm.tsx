@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useCreateTodo } from "../../hooks/useCreateTodo";
 import { Data } from "../../types/types";
+import Input from "../Input/Input";
+import Button from "../Button/Button";
 
 const TodoForm = () => {
   const [title, setTitle] = useState("");
@@ -30,19 +32,21 @@ const TodoForm = () => {
     };
 
     await mutateAsync(data);
+    setTitle("");
+    setDescription("");
   };
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <label className="label-title ">
-          Title:
-          <input type="text" name="title" value={title} onChange={handleChange} />
-        </label>
-        <label className="label-description">
-          Description:
-          <input type="textarea" name="description" value={description} onChange={handleChange} />
-        </label>
-        <input type="submit" disabled={isLoading} value="Submit" />
+        <Input labelTitle="Title" type="text" name="title" value={title} onChange={handleChange} />
+        <Input
+          labelTitle="Description"
+          type="textarea"
+          name="description"
+          value={description}
+          onChange={handleChange}
+        />
+        <Button title="submit" type="submit" disabled={isLoading} />
       </form>
     </>
   );

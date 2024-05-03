@@ -1,14 +1,9 @@
 import { TypesButton } from "../../types/types";
 
-const Button = ({ title, deleteAsync, isLoading }: TypesButton) => {
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    event.preventDefault();
-    deleteAsync();
-  };
-
+const Button = ({ title, onClick, disabled, type }: TypesButton) => {
   return (
     <>
-      <button type="button" onClick={handleClick} disabled={isLoading}>
+      <button type={type} onClick={onClick} disabled={disabled}>
         {title}
       </button>
     </>

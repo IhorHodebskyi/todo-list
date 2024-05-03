@@ -30,15 +30,6 @@ export class TodoListService {
     return await this.todoListRepository.find({ relations: ['status'] });
   }
 
-  async findOne(id: number) {
-    const existTodo = await this.todoListRepository.findOne({
-      where: { id },
-      relations: ['status'],
-    });
-    if (!existTodo) throw new BadRequestException('Todo not found');
-    return existTodo;
-  }
-
   async update(id: number, updateTodoListDto: UpdateTodoListDto) {
     const existTodo = await this.todoListRepository.findOne({
       where: { id },

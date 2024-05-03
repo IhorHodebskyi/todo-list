@@ -20,6 +20,11 @@ const Task: React.FC<ITodoList> = ({ id, title, description, status }) => {
     mutateAsync(data);
   };
 
+  const handleClick = async (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+    event.preventDefault();
+    await deleteAsync();
+  };
+
   return (
     <>
       <div key={id} className={`${isValue} wrapper-todo`}>
@@ -28,7 +33,7 @@ const Task: React.FC<ITodoList> = ({ id, title, description, status }) => {
             <Select isValue={isValue} handelCheng={handelCheng} isLoading={isLoading} />
           </div>
 
-          <Button title="Delete" isLoading={isLoadingForDeleted} deleteAsync={deleteAsync} />
+          <Button title="Delete" type="submit" disabled={isLoadingForDeleted} onClick={handleClick} />
         </form>
         <h3>{title}</h3>
         <p>{description}</p>

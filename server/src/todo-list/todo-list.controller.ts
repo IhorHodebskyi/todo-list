@@ -28,16 +28,15 @@ export class TodoListController {
     return this.todoListService.create(createTodoListDto);
   }
 
+  @ApiOperation({ summary: 'get to do list' })
+  @ApiResponse({ status: 200, type: [TodoList] })
   @Get()
   findAll() {
     return this.todoListService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.todoListService.findOne(+id);
-  }
-
+  @ApiOperation({ summary: 'update to do' })
+  @ApiResponse({ status: 200, type: TodoList })
   @Patch(':id')
   update(
     @Param('id') id: string,
@@ -46,6 +45,8 @@ export class TodoListController {
     return this.todoListService.update(+id, updateTodoListDto);
   }
 
+  @ApiOperation({ summary: 'delete to do' })
+  @ApiResponse({ status: 204 })
   @Delete(':id')
   @HttpCode(204)
   remove(@Param('id') id: string) {

@@ -10,7 +10,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity()
+@Entity('todo-list')
 export class TodoList {
   @ApiProperty({ example: '1' })
   @PrimaryGeneratedColumn()

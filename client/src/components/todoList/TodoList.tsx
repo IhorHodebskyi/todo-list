@@ -4,11 +4,13 @@ import Task from "../task/Task";
 const TodoList: React.FC<{ list: ITodoList[] }> = ({ list }: { list: ITodoList[] }) => {
   return (
     <>
-      <div>
+      <ul>
         {list.map(({ id, title, description, status }) => (
-          <Task id={id} title={title} description={description} status={status} />
+          <li>
+            <Task id={id} title={title} description={description} status={status} />
+          </li>
         ))}
-      </div>
+      </ul>
     </>
   );
 };

@@ -1,3 +1,5 @@
+import { ButtonHTMLAttributes } from "react";
+
 export interface ITodoList {
   id: number;
   title: string;
@@ -22,14 +24,25 @@ export interface Data {
   status?: string;
 }
 
-export interface TypesButton {
+type ButtonType = "submit" | "reset" | "button";
+
+export interface TypesButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   title: string;
-  isLoading: boolean;
-  deleteAsync: () => void;
+  onClick?: () => void;
+  disabled: boolean;
+  type: ButtonType;
 }
 
 export interface PropsSelect {
   isValue: string;
   isLoading: boolean;
   handelCheng: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+}
+
+export interface InputProps {
+  labelTitle: string;
+  type: string;
+  name: string;
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }

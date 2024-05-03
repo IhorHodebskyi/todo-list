@@ -20,7 +20,6 @@ export const todoServices = {
   },
 
   async deleteById(id: number) {
-    console.log(id);
     return await axios.delete(`/${id}`);
   },
 };
